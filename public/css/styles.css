@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.card {
+    background-color: #3c3c4a;
+    color: #fff;
+    width: 18rem;
+    outline: 0.1rem solid rgb(155, 190, 178)
+}

@@ -1,0 +1,42 @@
+<head>
+    <style>
+        .custom-container {
+            width: 80%;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-body {
+            width: 40vw;
+        }
+    </style>
+</head>
+
+<div class="container custom-container bg-gradient">
+    <div class="col-md-8">
+        <div class="card shadow" style="width: 38.5rem;">
+            <div class="card-body bg-gradient">
+                <h3 class="card-title text-center">Recruiter Login</h3>
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter your password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <hr class="my-4">
+                <p class="text-center">Don't have an account? <a href="#">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+</div>

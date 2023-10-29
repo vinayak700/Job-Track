@@ -1,0 +1,127 @@
+<head>
+    <style>
+        #jobinfo {
+            margin-bottom: 0.5rem;
+        }
+
+        .job-container {
+            padding-bottom: 0.5rem;
+            box-shadow: 2px 2px 7px 1px rgb(198, 197, 197);
+        }
+
+        .modal-container {
+            background-color: rgb(240, 240, 240);
+            border: 2px solid rgb(188, 188, 188);
+            border-radius: 10px;
+            margin: 20px 20px;
+            box-shadow: 2px 2px 7px 1px rgb(198, 197, 197);
+        }
+    </style>
+</head>
+
+
+
+<div class="container mt-2 job-container border rounded bg-light bg-gradient">
+    <div class="jumbotron jumbotron-fluid text-gray m-2">
+        <div class="container text-center">
+            <img src="https://thumbs.dreamstime.com/z/job-search-horizontal-banner-job-search-horizontal-banner-modern-young-people-flat-style-vector-illustration-116803991.jpg?w=992"
+                alt="Job Banner Image" class="img-fluid mb-3" style="max-height: 150px; width: 80%; height: 90%;">
+            <h1 class="display-5">
+                <%= job.jobdesignation %> Position
+            </h1>
+            <p class="lead">
+                <%= job.companyname %>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <h1>
+                <%= job.companyname %>
+                    <button type="button" class="btn btn-danger">
+                        <%= job.jobposted %>
+                    </button>
+            </h1>
+            <p class="text-muted" id="jobinfo">
+                <%= job.jobdesignation %>
+            </p>
+            <p class="text-muted" id="jobinfo">Location: <%= job.joblocation %>
+            </p>
+            <p class="text-muted" id="jobinfo">Salary: <%= job.salary %>
+            </p>
+            <p class="text-muted" id="jobinfo">Apply By: <%= job.applyby %>
+            </p>
+            <p class="text-muted" id="jobinfo">Number of openings: <%= job.numberofopenings %>
+            </p>
+            <p class="text-muted" id="jobinfo">Applicants: <%= job.applicants.length %>
+                    <% if(locals.userEmail) { %>
+                        <a href="/jobs/<%= job.id %>/applicants"><button type="button"
+                                class="btn btn-secondary btn-sm">Applicants List</button></a>
+                        <% } %>
+            </p>
+            <h3>Required Skills</h3>
+            <ul class="list-unstyled d-flex gap-2">
+                <% job.skillsrequired.map((skill)=>{ %>
+                    <li>
+                        <button type="button" class="btn btn-outline-info">
+                            <%= skill %>
+                        </button>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% if(job.applicants.length<job.numberofopenings) { %>
+                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyModal">Apply
+                    Now</button>
+                <% } %>
+        </div>
+        <% if(locals.userEmail) { %>
+            <div class="col-lg-4">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Actions</h5>
+                        <a href="/jobs/<%= job.id %>/update" class="btn btn-success">Update</a>
+                        <a href="/jobs/<%= job.id %>/delete" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</div>
+
+
+<!-- Modal for application form -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Application Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-container">
+                <form action="/jobs/<%= job.id %>/applicants" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Contact</span>
+                            <input required name="contact" type="tel" aria-label="First name" class="form-control"
+                                placeholder="+91 ____ __ ____" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Upload Your Resume</label>
+                        <input type="file" class="form-control" id="resume" accept=".pdf,.doc,.docx" name="resume"
+                            accept="images/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<head>
+    <style>
+        .custom-container {
+            width: 80%;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-body {
+            width: 40vw;
+        }
+    </style>
+</head>
+
+<div class="container my-5 custom-container bg-gradient">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow" style="width: 38.5rem;">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Post a New Job</h3>
+                    <form action="/jobs" method="post">
+                        <div class="input-group mb-3">
+                            <select required name="jobcategory" class="form-select" aria-label="Default select example">
+                                <option selected disabled>Select Job Category</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Non-Tech">Non Tech</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <select required name="jobdesignation" class="form-select"
+                                aria-label="Default select example">
+                                <option selected disabled>Select Job Designation</option>
+                                <option value="HR">HR</option>
+                                <option value="SDE">SDE</option>
+                                <option value="DevOps">DevOps</option>
+                                <option value="MERN Developer">MERN Developer</option>
+                                <option value="MEAN Developer">MEAN Developer</option>
+                                <option value="JAVA Developer">JAVA Developer</option>
+                                <option value="Front-End Developer">Front-End Developer</option>
+                                <option value="Back-End Developer">Back-End Developer</option>
+                                <option value="Full-Stack Developer">Full-Stack Developer</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="job_location" class="form-label">Enter Job Location</label>
+                            <div class="input-group">
+                                <input required name="joblocation" type="text" class="form-control" id="job_location">
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Company Name</span>
+                            <input required name="companyname" type="text" class="form-control"
+                                aria-label="Company Name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input required name="salary" type="text" class="form-control" placeholder="Enter Salary"
+                                aria-label="Salary">
+                            <span class="input-group-text">Total Positions</span>
+                            <input required name="numberofopenings" type="number" class="form-control"
+                                placeholder="Total No. of Openings" aria-label="Total Positions">
+                        </div>
+                        <div class="input-group mb-3">
+                            <select required multiple name="skillsrequired" class="form-select"
+                                aria-label="Default select example">
+                                <option selected disabled>Select Skills Required</option>
+                                <option value="React">React</option>
+                                <option value="NodeJs">NodeJs</option>
+                                <option value="Angular">Angular</option>
+                                <option value="MongoDB">MongoDB</option>
+                                <option value="SQL">SQL</option>
+                                <option value="Express">Express</option>
+                                <option value="Java">Java</option>
+                                <option value="SpringBoot">SpringBoot</option>
+                                <option value="C++">C++</option>
+                                <option value="Data Structures & Algo">Data Structures & Algo</option>
+                            </select>
+                            <span class="input-group-text">Apply By</span>
+                            <input name="applyby" type="date" class="form-control">
+                        </div>
+                        <button class="w-100 mb-3 mt-2 btn btn-md btn-success" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

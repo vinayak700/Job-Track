@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-info">Applicants List</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Resume</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% job.applicants.map((applicant, index)=>{ %>
+                <tr>
+                    <th scope="row">
+                        <%= index+1 %>
+                    </th>
+                    <td>
+                        <%= applicant.name %>
+                    </td>
+                    <td>
+                        <%= applicant.email %>
+                    </td>
+                    <td>
+                        <%= applicant.contact %>
+                    </td>
+                    <td><a href="" class="btn btn-primary btn-sm">View</a></td>
+                    <td><a href="/jobs/<%= job.id %>/applicants/<%= applicant.id %>"
+                            class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>

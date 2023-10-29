@@ -1,0 +1,121 @@
+<head>
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<span class="alert alert-primary lastVisit" role="alert">
+    Your last visit was on: <%= locals.lastVisit %>
+</span>
+<div class="container">
+    <div class="content">
+        <h1 class="display-3">Unlock Your Career Potential at JobPortal</h1>
+        <p class="lead">Find the perfect job or the best talent for your company.</p>
+        <div class="btn-container">
+            <a href="/jobs" class="btn btn-jobseeker">I am a JobSeeker</a>
+            <a href="/recruiter" class="btn btn-recruiter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">I am
+                a Recruiter</a>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="images/1.png" alt="Job Portal" class="landing-image">
+    </div>
+</div>
+
+<!-- Modal for Registration -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title bold text-success" id="staticBackdropLabel">
+                    Recruiter Registration!
+                </h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/register" method="post" class="p-2">
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Name</span>
+                            <input required name="name" type="text" aria-label="name" class="form-control"
+                                placeholder="enter your name" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Email</span>
+                            <input required name="email" type="email" aria-label="email" class="form-control"
+                                placeholder="enter your email" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Password</span>
+                            <input required name="password" type="password" aria-label="password" class="form-control"
+                                placeholder="enter your password" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-md mt-2 lbtn btn-info">Register</button>
+                </form>
+            </div>
+            <div class="modal-footer d-flex align-items-centre justify-content-between">
+                <div class="left d-flex flex-row align-items-centre justify-content-centre gap-2">
+                    <!-- Button trigger login modal -->
+                    <span>Already registered?</span>
+                    <button type="button" class="btn btn-sm px-3 btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for  Login-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-success" id="exampleModalLabel">
+                    Recruiter Login!
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/login" method="post" class="p-2">
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Email</span>
+                            <input required name="email" type="email" aria-label="email" class="form-control"
+                                placeholder="enter your email" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Password</span>
+                            <input required name="password" type="password" aria-label="password" class="form-control"
+                                placeholder="enter your password" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-md mt-2 lbtn btn-info">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Automatically close the alert after 5 seconds (5000 milliseconds)
+    setTimeout(function () {
+        document.querySelector(".alert").classList.add("fade");
+        document.querySelector(".alert").remove();
+    }, 4000);
+</script>
